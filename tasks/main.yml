@@ -1,0 +1,33 @@
+---
+# parted/tasks/main.yml
+
+#- name: install requirements
+#  package:
+#    name: "{{ parted_requirements }}"
+#    state: present
+#  register: parted_install_requirements
+#  until: parted_install_requirements is succeeded
+#  retries: 3
+
+- name: install parted
+  package:
+    name: "{{ parted_packages }}"
+    state: present
+  register: parted_install_parted
+  until: parted_install_parted is succeeded
+  retries: 3
+
+#- name: configure parted
+#  template:
+#    src: "{{ parted_config_file }}.j2"
+#    dest: "{{ parted_config_directory }}/{{ parted_config_file }}"
+#  notify:
+#    - restart parted
+
+#- name: start and enable parted
+#  service:
+#    name: "{{ parted_service }}"
+#    state: started
+#    enabled: yes
+#  when:
+#    - ansible_virtualization_type != "docker"

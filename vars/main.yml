@@ -1,0 +1,42 @@
+---
+# parted/vars/main.yml
+
+_parted_requirements:
+  default:
+    - parted
+  Alpine:
+    - parted
+  Archlinux:
+    - parted
+  Debian:
+    - parted
+  CentOS:
+    - parted
+  CentOS-7:
+    - parted
+  Fedora:
+    - parted
+  openSUSE Leap:
+    - parted
+  Ubuntu:
+    - parted
+
+parted_requirements: "{{ _parted_requirements[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_parted_requirements[ansible_distribution] | default(_parted_requirements['default'])) }}"
+
+_parted_packages:
+  default:
+    - parted
+
+parted_packages: "{{ _parted_packages[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_parted_packages[ansible_distribution] | default(_parted_packages['default'])) }}"
+
+_parted_config_directory:
+  default: /etc
+
+parted_config_directory: "{{ _parted_config_directory[ansible_distribution] | default(_parted_config_directory['default']) }}"
+
+parted_config_file: parted.conf
+
+_parted_service:
+  default: parted
+
+parted_service: "{{ _parted_service[ansible_distribution] | default(_parted_service['default']) }}"

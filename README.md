@@ -91,6 +91,18 @@ Sample roles/requirements.yml: (install with `ansible-galaxy install -r roles/re
 - name: cjsteel.parted
 ```
 
+## Testing
+
+### molecule testing and no_log debug option
+
+You will need to set the environment variable of `MOLECULE_DEBUG` to log errors, alternately you may prefer to debug manually by using the  `--debug` flag. Here is an example applied against the *vagrant* molecule scenario:
+
+```text
+molecule --debug create -s vagrant
+```
+
+
+
 ## License
 
 Apache License, Version 2.0
@@ -113,4 +125,5 @@ Other collections of great public facing Ansible roles:
 * [Jeff Geerling](https://github.com/geerlingguy)
 
 * [Larry Smith Jr.](https://github.com/mrlesmithjr)
+
 # ansible-role-parted

@@ -1,0 +1,9 @@
+---
+# parted/handlers/main.yml
+
+- name: restart parted
+  service:
+    name: "{{ parted_service }}"
+    state: restarted
+  when:
+    - ansible_virtualization_type != "docker"
